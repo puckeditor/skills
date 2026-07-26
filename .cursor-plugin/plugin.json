@@ -1,0 +1,23 @@
+{
+  "name": "puck",
+  "displayName": "Puck",
+  "version": "1.0.0",
+  "description": "Skills for working with Puck — the visual editor for React. Integrate it into an existing app, author configs from your own components, and debug integrations.",
+  "author": {
+    "name": "Puck",
+    "email": "support@puckeditor.com"
+  },
+  "homepage": "https://puckeditor.com",
+  "repository": "https://github.com/puckeditor/skills",
+  "license": "MIT",
+  "keywords": [
+    "puck",
+    "react",
+    "visual-editor",
+    "page-builder",
+    "cms",
+    "drag-and-drop"
+  ],
+  "category": "developer-tools",
+  "skills": "./skills/"
+}
