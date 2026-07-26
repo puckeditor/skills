@@ -6,9 +6,9 @@ editor for React.
 
 ## Skills
 
-| Skill                 | Description                                                                                                                                                          |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [puck](./skills/puck) | Integrate Puck into an existing application, author a config from the app's own components, wire up editor and render routes, debug an integration, and add Puck AI. |
+| Skill                 | Description                                                                                                                                                                  |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [puck](./skills/puck) | Integrate Puck into an application, new or existing, author a config from the app's own components, wire up editor and render routes, debug an integration, and add Puck AI. |
 
 ## Installation
 
@@ -39,6 +39,7 @@ ln -s /path/to/puck-skills/skills/puck /path/to/skills-directory/puck
 Once installed, the agent picks the skill up when relevant — for example:
 
 - "Add a page builder to this app"
+- "Start a new Puck project with React Router"
 - "Make our marketing components editable in Puck"
 - "Puck components render unstyled in the editor"
 - "Set up Puck AI"
@@ -52,8 +53,8 @@ application. The skill installs it if it isn't present.
 Puck AI additionally needs a [Puck Cloud](https://cloud.puckeditor.com) account with credit
 and a `PUCK_API_KEY`.
 
-Starting a project from scratch? Use `npx create-puck-app` — this skill is for existing
-applications.
+New projects are in scope too — the skill scaffolds from a `create-puck-app` recipe and then
+replaces the shortcuts the recipes ship with.
 
 ## Contributing
 

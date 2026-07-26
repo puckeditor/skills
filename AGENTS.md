@@ -10,10 +10,17 @@ adhered to them. Fix the edit if not.
   content for where the docs fall short. _Every addition is maintenance surface and dilutes
   the skill._
 
-- **Never commit Puck code.** Link to the docs page so the agent fetches current, correct
-  code; use pseudo-code only for logic that is genuinely specific to the workflow. _Committed
-  code goes stale, and a skill is copied into the user's repo at install time, so stale code
-  there outlives any fix here._
+- **Almost never commit Puck code.** Link to the docs page so the agent fetches current,
+  correct code. _Committed code goes stale, and a skill is copied into the user's repo at
+  install time, so stale code there outlives any fix here._ Two exceptions, both in
+  `SKILL.md` only: the minimal three-file integration example, which anchors the shape of the
+  API and covers the imports that `.md` conversion strips; and pseudo-code for logic genuinely
+  specific to a workflow. A reference file should contain no Puck code.
+
+- **Link to docs as `.md`.** Every docs page is served as markdown at its URL plus `.md`, and
+  `https://puckeditor.com/llms.txt` indexes them all. Use the `.md` form in every link so the
+  agent fetches markdown rather than parsing HTML. Verify new links resolve before committing
+  them.
 
 - **You should almost never touch the frontmatter `description` in `SKILL.md`.** It only
   controls whether the skill is invoked, and anyone asking about a use case already mentions
@@ -72,7 +79,9 @@ call out where the diff violates them.
 - **Docs checked, and the addition beats them.** Fetch every docs page the changed content
   links, and search the docs for the use case even when the diff links nothing. Flag anything
   an agent could have got from the docs.
-- **No committed Puck code.** Flag snippets that should be a docs link.
+- **No committed Puck code**, beyond the two `SKILL.md` exceptions. Flag snippets in reference
+  files that should be a docs link.
+- **Docs links use the `.md` form** and resolve.
 - **Concise.** Flag filler and anything over 100 lines without specific justification.
 - **`metadata.required_access` present and using only the allowed tokens.**
 - **Routing lives in exactly two places**, one entry per reference.

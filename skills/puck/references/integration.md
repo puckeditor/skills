@@ -10,6 +10,10 @@ metadata:
 
 # Adding Puck to an existing application
 
+Steps 1–2 are specific to an existing codebase; a new app scaffolded with
+`npx create-puck-app` arrives with them done and starts at step 3, replacing the recipe's
+filesystem persistence and open `/edit` route.
+
 ## 1. Survey before proposing anything
 
 Establish these from the repo; only ask what the repo can't answer.
@@ -56,11 +60,11 @@ it fires per keystroke.
 ## 6. Render route
 
 Fetch the payload by path and pass it to `<Render>`, 404 if absent.
-[`root.props`](https://puckeditor.com/docs/integrating-puck/root-configuration) is the right
+[`root.props`](https://puckeditor.com/docs/integrating-puck/root-configuration.md) is the right
 home for SEO fields — read them in the framework's metadata hook.
 
 If any config component is client-only, follow
-[server components](https://puckeditor.com/docs/integrating-puck/server-components): either
+[server components](https://puckeditor.com/docs/integrating-puck/server-components.md): either
 add `"use client"` to the component files and _call_ them in `render` (`render: (props) =>
 <Thing {...props} />`, not `render: Thing`), or split into client/server configs sharing one
 `Config<Props>` type. A server config that omits `richtext` or `slot` field definitions

@@ -13,8 +13,8 @@ metadata:
 Adds a chat panel that assembles and designs pages. Two halves: a client plugin and a
 server handler that brokers requests through Puck Cloud.
 
-Follow [AI getting started](https://puckeditor.com/docs/ai/getting-started) for the current
-steps, and [`puckHandler`](https://puckeditor.com/docs/api-reference/ai/cloud-client/puck-handler)
+Follow [AI getting started](https://puckeditor.com/docs/ai/getting-started.md) for the current
+steps, and [`puckHandler`](https://puckeditor.com/docs/api-reference/ai/cloud-client/puck-handler.md)
 for the handler's options. This file covers the parts that trip integrations up.
 
 ## Prerequisites

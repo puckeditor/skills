@@ -60,5 +60,5 @@ keyed by page path. Authorization is not optional — see references/integration
 
 `puckHandler` mounts at `/api/puck/*` and has a per-framework snippet for Next.js, React
 Router, Hono and TanStack Start in the
-[docs](https://puckeditor.com/docs/api-reference/ai/cloud-client/puck-handler). See
+[docs](https://puckeditor.com/docs/api-reference/ai/cloud-client/puck-handler.md). See
 references/ai.md.

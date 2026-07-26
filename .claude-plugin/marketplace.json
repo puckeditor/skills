@@ -6,13 +6,13 @@
   },
   "metadata": {
     "description": "Agent Skills for Puck, the visual editor for React.",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {
       "name": "puck",
       "source": "./",
-      "description": "Integrate Puck into an existing application, author a config from your own components, debug integrations, and add Puck AI."
+      "description": "Integrate Puck into an application, author a config from your own components, debug integrations, and add Puck AI."
     }
   ]
 }

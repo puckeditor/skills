@@ -9,8 +9,8 @@ metadata:
 # Authoring a config from an existing app
 
 Field types, options and syntax are documented per field — start from
-[fields](https://puckeditor.com/docs/api-reference/fields/base) and
-[component configuration](https://puckeditor.com/docs/integrating-puck/component-configuration).
+[fields](https://puckeditor.com/docs/api-reference/fields/base.md) and
+[component configuration](https://puckeditor.com/docs/integrating-puck/component-configuration.md).
 This file covers only the judgment those pages don't: which components to expose, and how to
 shape their fields.
 
@@ -23,12 +23,12 @@ feature grids, CTAs, testimonials, media blocks, headings, layout primitives.
 
 ## Rejecting and adapting
 
-| Component                       | Problem                          | Fix                                                                                                                                                                                                    |
-| ------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Fetches its own data            | props aren't the source of truth | expose the query args as fields, or use [`resolveData`](https://puckeditor.com/docs/integrating-puck/dynamic-props) / an [`external` field](https://puckeditor.com/docs/api-reference/fields/external) |
-| Takes `children: ReactNode`     | not JSON-serializable            | use a [`slot` field](https://puckeditor.com/docs/api-reference/fields/slot)                                                                                                                            |
-| Needs router/auth/theme context | breaks inside the editor iframe  | provide the context in `root.render`                                                                                                                                                                   |
-| Dozens of props                 | unusable form                    | expose the 3–6 an editor actually changes; hardcode the rest in `render`                                                                                                                               |
+| Component                       | Problem                          | Fix                                                                                                                                                                                                          |
+| ------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Fetches its own data            | props aren't the source of truth | expose the query args as fields, or use [`resolveData`](https://puckeditor.com/docs/integrating-puck/dynamic-props.md) / an [`external` field](https://puckeditor.com/docs/api-reference/fields/external.md) |
+| Takes `children: ReactNode`     | not JSON-serializable            | use a [`slot` field](https://puckeditor.com/docs/api-reference/fields/slot.md)                                                                                                                               |
+| Needs router/auth/theme context | breaks inside the editor iframe  | provide the context in `root.render`                                                                                                                                                                         |
+| Dozens of props                 | unusable form                    | expose the 3–6 an editor actually changes; hardcode the rest in `render`                                                                                                                                     |
 
 Adapt in `render` rather than editing the app's component — rename props, pin the ones that
 shouldn't be editable, and keep the app's own call sites untouched.
@@ -55,10 +55,10 @@ with the slot's `allow`/`disallow`.
 
 ## Structure
 
-Group components with [categories](https://puckeditor.com/docs/integrating-puck/categories)
+Group components with [categories](https://puckeditor.com/docs/integrating-puck/categories.md)
 once past roughly eight, or the sidebar stops being navigable.
 
-[`root`](https://puckeditor.com/docs/integrating-puck/root-configuration) wraps every page —
+[`root`](https://puckeditor.com/docs/integrating-puck/root-configuration.md) wraps every page —
 the place for page-level fields and app providers. Two traps: `root.render` must render
 `children` or nothing appears, and overriding `root.fields` drops the default `title` unless
 re-declared.
@@ -66,14 +66,14 @@ re-declared.
 ## Beyond static fields
 
 Reach for these only when a static field set can't express the component:
-[`resolveData`](https://puckeditor.com/docs/integrating-puck/dynamic-props) for derived
-props, [`resolveFields`](https://puckeditor.com/docs/integrating-puck/dynamic-fields) for a
+[`resolveData`](https://puckeditor.com/docs/integrating-puck/dynamic-props.md) for derived
+props, [`resolveFields`](https://puckeditor.com/docs/integrating-puck/dynamic-fields.md) for a
 field set that depends on current props,
-[`external` fields](https://puckeditor.com/docs/integrating-puck/external-data-sources) for
+[`external` fields](https://puckeditor.com/docs/integrating-puck/external-data-sources.md) for
 picking records from a CMS, and
-[permissions](https://puckeditor.com/docs/integrating-puck/feature-toggling) to restrict what
+[permissions](https://puckeditor.com/docs/integrating-puck/feature-toggling.md) to restrict what
 editors can do per component.
 
 Once a config is in production its prop shapes are a stored data format. Change them through
-[data migration](https://puckeditor.com/docs/integrating-puck/data-migration), not by editing
+[data migration](https://puckeditor.com/docs/integrating-puck/data-migration.md), not by editing
 rows.

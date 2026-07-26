@@ -22,20 +22,20 @@ to a selector outside the iframe — doesn't reach the preview. Work through, in
    only reachable through the config get purged.
 3. Runtime style injection (emotion, styled-components): use
    `@puckeditor/plugin-emotion-cache`, or inject into the iframe via the
-   [`iframe` override](https://puckeditor.com/docs/api-reference/overrides/iframe), which
+   [`iframe` override](https://puckeditor.com/docs/api-reference/overrides/iframe.md), which
    receives the iframe `document`.
 4. Styles keyed off a class or attribute on `<html>`/`<body>` (dark mode, theme): mirror it
    onto the iframe document with the same override.
 
 `iframe={{ enabled: false }}` will "fix" it by removing the isolation — it also disables
 viewports and lets app styles bleed into the editor UI. Use it to confirm the diagnosis, not
-as the fix. Full detail in [styling](https://puckeditor.com/docs/integrating-puck/styling).
+as the fix. Full detail in [styling](https://puckeditor.com/docs/integrating-puck/styling.md).
 
 ## Flash of unstyled content when the editor loads
 
 Puck loads its styles at runtime by default; bundle them instead. If bundling `puck.css`
 leaks editor styles into the iframe, bundle `@puckeditor/core/no-external.css` and disable
-style sync — see [styling](https://puckeditor.com/docs/integrating-puck/styling).
+style sync — see [styling](https://puckeditor.com/docs/integrating-puck/styling.md).
 
 ## Hook or context errors on the editor route
 
@@ -46,7 +46,7 @@ style sync — see [styling](https://puckeditor.com/docs/integrating-puck/stylin
 
 The server-side config is missing the `richtext`/`slot` field definitions — field definitions
 drive the data transforms, so both configs need them even when only one renders
-interactively. See [server components](https://puckeditor.com/docs/integrating-puck/server-components).
+interactively. See [server components](https://puckeditor.com/docs/integrating-puck/server-components.md).
 
 ## A component renders in the editor but not via `<Render>`
 
@@ -72,7 +72,7 @@ top level of its route rather than inside the app's layout chrome.
 ## Stored payloads no longer match the config
 
 A renamed component or prop. Use
-[data migration](https://puckeditor.com/docs/integrating-puck/data-migration) so existing
+[data migration](https://puckeditor.com/docs/integrating-puck/data-migration.md) so existing
 payloads upgrade on read.
 
 ## Anyone can open the editor
