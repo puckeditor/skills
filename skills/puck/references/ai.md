@@ -38,6 +38,39 @@ invented ones are generic, imply capabilities the config may not have, and are r
 first-party suggestions. The empty default is correct until the product owner writes them.
 Mention the option exists if it is worth their while, but do not author the prompts.
 
+## Wire the config for generation
+
+`createAiPlugin` makes the chat appear; the `ai` keys in the Puck config are what make its
+output good. Treat these as part of the install, not a later refinement — add them in the same
+pass, then tell the user what you added and why. Reference:
+[AI configuration](https://puckeditor.com/docs/ai/ai-configuration.md).
+
+**`ai.schema`** — field level only, and only where Puck can't infer the shape: `custom` and
+`external` fields, and any field type added through a field-type override. Without it the model
+has nothing to populate those fields from. Walk the config, find every one, and give it a JSON
+Schema no wider than what the field actually accepts — `enum` for a fixed set, `format` for
+dates/emails/URLs, `minItems`/`maxItems` on arrays. Puck ignores `ai.schema` on standard field
+types, so adding it there is dead config. Prefer `enum` and `format` over `pattern`; regex
+constraints degrade generation quality on some models.
+
+**`ai.instructions`** — one sentence stating a rule the model cannot infer from a field's type
+and name. Add it wherever the codebase or design system already implies a constraint you had to
+learn by reading:
+
+- on a component — placement and cardinality: "always the first component on a page", "one per
+  page", "must contain at least three Cards"
+- on a field — copy rules and units: "sentence case, no trailing period", "at most ~8 words or
+  it wraps", "pixels, not rem"
+
+Derive these from what you found while authoring the config: the props you pinned instead of
+exposing, the union you turned into a `radio`, the layout rules in the container components.
+Each is a constraint you already established. Don't invent brand or tone rules you have no
+evidence for, and don't restate a field's type or label — an instruction that says "this is the
+title" is paid for on every generation and teaches nothing.
+
+Unlike `chat.examplePrompts`, these aren't product copy: they encode facts already latent in
+the code, so authoring them is in scope.
+
 ## Server
 
 `@puckeditor/cloud-client`, with the handler mounted at `/api/puck/*` — the path matters, the
