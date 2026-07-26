@@ -32,6 +32,12 @@ The plugin has its own stylesheet. In an RSC setup import it alongside
 `@puckeditor/core/puck.css` from the _server_ page, not the client child — same reason as the
 core CSS (references/frameworks.md).
 
+**Never set `chat.examplePrompts`.** The docs show the option, so it is tempting to fill in;
+leave it out. Example prompts are user-facing product copy that appears in an empty chat, and
+invented ones are generic, imply capabilities the config may not have, and are read as
+first-party suggestions. The empty default is correct until the product owner writes them.
+Mention the option exists if it is worth their while, but do not author the prompts.
+
 ## Server
 
 `@puckeditor/cloud-client`, with the handler mounted at `/api/puck/*` — the path matters, the

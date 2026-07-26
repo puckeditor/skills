@@ -1,7 +1,7 @@
 {
   "name": "puck",
   "displayName": "Puck",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Skills for working with Puck — the visual editor for React. Integrate it into an app, author configs from your own components, and debug integrations.",
   "author": {
     "name": "Puck",
