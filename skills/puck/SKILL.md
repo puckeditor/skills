@@ -6,6 +6,9 @@ allowed-tools:
   - Bash(curl *puckeditor.com/*)
   - Bash(npm view @puckeditor/* *)
   - Bash(npm ls @puckeditor/*)
+  - Bash(npx @puckeditor/cli status *)
+  - Bash(npx @puckeditor/cli doctor *)
+  - Bash(npx -y @puckeditor/cli@* docs *)
 ---
 
 # Puck
@@ -47,6 +50,19 @@ page covers something, then fetch that page's `.md`.
 Caveat: the `.md` conversion currently strips `import` lines from code blocks, so fetched
 examples show usage without the imports they need. Everything is imported from
 `@puckeditor/core` unless the page says otherwise.
+
+The hosted docs track the latest release. When the project pins a version, read that
+version's docs instead: the CLI ships the docs for its release, and its version matches
+`@puckeditor/core`.
+
+```
+npx -y @puckeditor/cli@<version> docs find "<topic>"
+npx -y @puckeditor/cli@<version> docs cat api-reference/fields/slot
+```
+
+`docs ls` lists every page and `docs grep` searches their content. If that version of the
+CLI isn't published, use `https://puckeditor.com/v/<version>/docs`. Before upgrading, read the
+target version's `guides/migrations` pages.
 
 ## Minimal integration
 
@@ -94,16 +110,25 @@ export default function Page({ data }: { data: any }) {
 }
 ```
 
-## Starting a new application
+## Setting up with the CLI
 
-`npx create-puck-app my-app` scaffolds from a recipe: `next`, `next-ai`, `react-router`, or
-`react-router-ai`. Pick by the user's framework, and the `-ai` variant only if they want
-Puck AI (references/ai.md).
+`npx @puckeditor/cli` adds Puck to a new or existing app, optionally with Puck AI. Prefer it
+to wiring routes by hand:
 
-Read the generated README before changing anything — recipes ship deliberate shortcuts a real
-app must replace: an unauthenticated `/edit` route, and persistence to the local filesystem
-rather than a database. Both need fixing before deploy. From there the config, persistence and
-auth guidance in references/integration.md applies unchanged.
+1. `npx @puckeditor/cli status --json` shows what's already set up.
+2. `npx @puckeditor/cli init --dry-run --json` returns the plan. Confirm it with the user
+   (principle 4).
+3. `npx @puckeditor/cli init --yes --json` applies it. On `action_required`, show each entry in
+   `actions` to the user — a Puck Cloud login, or whether they want Puck AI — then run its
+   `rerun` command.
+
+The full output contract is in the [CLI docs](https://puckeditor.com/docs/cli.md). If the CLI
+reports the project as unsupported, follow references/integration.md by hand.
+
+The result is a working editor, not a finished integration. It ships deliberate shortcuts a
+real app must replace: placeholder components, an unauthenticated editor route, and
+persistence to the local filesystem rather than a database. From there the config,
+persistence and auth guidance in references/integration.md applies unchanged.
 
 ## Use case specific references
 

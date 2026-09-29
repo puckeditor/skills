@@ -10,9 +10,9 @@ metadata:
 
 # Adding Puck to an existing application
 
-Steps 1–2 are specific to an existing codebase; a new app scaffolded with
-`npx create-puck-app` arrives with them done and starts at step 3, replacing the recipe's
-filesystem persistence and open `/edit` route.
+Steps 1–2 are specific to an existing codebase. When the Puck CLI sets up the app (see
+SKILL.md), it does steps 2, 4 and 6; continue from step 3, replacing its placeholder
+components, filesystem persistence and open editor route.
 
 ## 1. Survey before proposing anything
 
@@ -73,7 +73,7 @@ renders escaped strings and un-nested children — keep the field definitions in
 ## 7. Auth
 
 Put the app's existing authorization in front of the editor route _and_ the save endpoint.
-The `create-puck-app` recipes ship an open `/edit` route with a warning; do not reproduce
+The CLI and `create-puck-app` ship an open editor route with a warning; do not reproduce
 that in a real app. If the app has no auth to reuse, say so explicitly rather than leaving
 it implied.
 
